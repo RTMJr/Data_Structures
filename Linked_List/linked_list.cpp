@@ -40,11 +40,32 @@ void Linked_List::insert_at_head(int new_value)
   Node* new_node;  
   new_node = new Node;
   new_node->value = new_value;
-  new_node->next = head->next;
-  head = new_node;
+  new_node->next = this->head;
+  this->head = new_node;
 }
 
-void Linked_List::print_list(const Linked_List& list_head)
+void Linked_List::insert_after(int new_value, int previous_node)
+{ 
+  int node_index = 0;
+  Node* current = this->head;
+  Node* new_node;
+  new_node = new Node;
+  new_node->value = new_value;
+
+  while (node_index != previous_node) {
+    current = current->next;
+    node_index++;
+  }
+
+  new_node->next = current->next;
+  current->next = new_node;
+}
+  
+
+
+  
+
+void Linked_List::print_list()
 {
   Node* current;
   current = head; 
