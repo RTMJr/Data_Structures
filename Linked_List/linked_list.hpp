@@ -15,6 +15,9 @@ class Linked_List {
     Linked_List(const Linked_List& list);
     void insert_at_head(int new_value);
     void insert_after(int new_value, int previous_node);
+    void remove_at_head();
+    void remove_after(int previous_node);
+    void reverse_list();
     void print_list();
     int get_size() const { return size; };
     Node* get_head() const { return head; };

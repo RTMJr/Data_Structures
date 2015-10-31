@@ -16,14 +16,11 @@ int main(int argc, char* argv[])
   my_list.insert_at_head(7);
 
   my_list.print_list();
-
   std::cout << std::endl;
 
-  my_list.insert_after(50, 2);
-
+  my_list.reverse_list();
   my_list.print_list();
 
-  std::cout << std::endl;
 
   return 0;
 }
