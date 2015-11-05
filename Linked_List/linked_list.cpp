@@ -48,6 +48,7 @@ void Linked_List::insert_at_head(int new_value)
   new_node->value = new_value;
   new_node->next = this->head;
   this->head = new_node;
+  size++;
 }
 
 /*  insert_after
@@ -71,6 +72,7 @@ void Linked_List::insert_after(int new_value, int previous_node)
 
   new_node->next = current->next;
   current->next = new_node;
+  size++;
 }
 
 /*  remove_at_head
@@ -86,6 +88,7 @@ void Linked_List::remove_at_head()
 
   this->head = this->head->next;
   delete old_node;
+  size--;
 }
 
 /*  remove_after
@@ -98,6 +101,7 @@ void Linked_List::remove_after(int previous_node)
 {
   if (previous_node == 0) {
     this->remove_at_head();
+    size--;
     return;
   }
 
@@ -113,6 +117,7 @@ void Linked_List::remove_after(int previous_node)
 
   previous->next = current->next;
   delete current;
+  size--;
 }
 
 /*  reverse_list
@@ -153,5 +158,3 @@ void Linked_List::print_list()
     current = current->next;
   }
 }
-
-

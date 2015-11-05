@@ -5,11 +5,11 @@ CXXFLAGS += -pedantic-errors
 CXXFLAGS += -g
 LDLIBS = 
 
-OBJS = linked_list.o main.o
+OBJS = doubly_linked_list.o main.o
 
-SRCS = linked_list.cpp main.cpp
+SRCS = doubly_linked_list.cpp main.cpp
 
-HEADERS = linked_list.hpp
+HEADERS = doubly_linked_list.hpp
 
 #target: prerequisites
 #    recipe
