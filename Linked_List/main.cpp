@@ -28,5 +28,15 @@ int main(int argc, char* argv[])
 
   my_list.print_list_head();
 
+  std::cout << std::endl << "Calling copy constructor..." << std::endl << std::endl;  
+
+//  Doubly_Linked_List other_list;
+
+ // other_list.insert_at_head(55);
+
+  Doubly_Linked_List new_list(my_list); 
+
+  new_list.print_list_head();
+
   return 0;
 }

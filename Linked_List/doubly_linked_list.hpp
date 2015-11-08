@@ -24,6 +24,7 @@ class Doubly_Linked_List {
     void print_list_head();
     void print_list_tail();
     int get_size() const { return size; };
+    void set_size(int new_size) { size = new_size; };
     Node* get_head() const { return head; };
     Node* get_tail() const { return tail; };
   private:

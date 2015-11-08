@@ -16,7 +16,20 @@ Doubly_Linked_List::Doubly_Linked_List()
 
 Doubly_Linked_List::~Doubly_Linked_List()
 {
-  // empty
+  Node* current;
+  Node* temp;
+
+  if (this->get_size() == 0)
+    return;
+
+  current = this->get_head();
+
+  while (current != NULL) {
+    temp = current;
+    current = current->next;
+    delete temp;
+  }
+
 }
 
 /* copy constructor */
@@ -24,18 +37,42 @@ Doubly_Linked_List::~Doubly_Linked_List()
 Doubly_Linked_List::Doubly_Linked_List(const Doubly_Linked_List& list) 
                                       : size(list.get_size())
 {
+  head = NULL; 
+  tail = NULL;
+
   Node* current;
   Node* copy_current; 
-  current = this->head;
-  copy_current = list.get_head();
+  current = list.get_head();
+  copy_current = new Node;
+
+  if (list.get_size() == 0) 
+    return;
+
+  if (list.get_size() == 1) {
+    copy_current->prev = head;
+    copy_current->next = tail;
+    copy_current->value = current->value;
+    head = tail = copy_current;
+    return;
+  }
+
+  copy_current->prev = head;
+  head = copy_current;
 
   while (current != NULL) {
     copy_current->value = current->value;
-    copy_current->next = current->next;
-    copy_current->prev = current->prev;
+    if (current->next != NULL) {
+      Node* new_node;
+      new_node = new Node;
+      new_node->prev = copy_current;
+      copy_current->next = new_node;
+      copy_current = new_node;
+    }
     current = current->next;
-    copy_current = current;
   }
+
+  tail = copy_current;
+  copy_current->next = NULL;
 } 
 
 /*  insert_at_head
