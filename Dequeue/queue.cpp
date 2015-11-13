@@ -96,23 +96,20 @@ void Queue::pop_front()
 {
   Node* temp;
 
-  if (size == 0)
-    return;
-
-  if (size == 1) {
-    temp = data->get_head()->next;
-    data->get_head()->next = data->get_tail();
-    data->get_tail()->prev = data->get_head();
-    delete temp;
-    size--;
-    return;
+  if (size == 0) {
+  } else if (size == 1) {
+      temp = data->get_head()->next;
+      data->get_head()->next = data->get_tail();
+      data->get_tail()->prev = data->get_head();
+      delete temp;
+      size--;
+  } else {
+      temp = data->get_tail()->prev;
+      data->get_tail()->prev = data->get_tail()->prev->prev;
+      data->get_tail()->prev->prev->next = data->get_tail();
+      delete temp;
+      size--;
   }
-
-  temp = data->get_tail()->prev;
-  data->get_tail()->prev = data->get_tail()->prev->prev;
-  data->get_tail()->prev->prev->next = data->get_tail();
-  delete temp;
-  size--;
 }
 
 /* 
@@ -142,4 +139,14 @@ void Queue::view_queue()
 int Queue::get_size()
 {
   return size;
+}
+
+Node* Queue::get_head()
+{
+  return data->get_head();
+}
+
+Node* Queue::get_tail()
+{
+  return data->get_tail();
 }

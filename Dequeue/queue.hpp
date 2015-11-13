@@ -12,8 +12,11 @@ class Queue : public DL_List {
     int front();
     void push_back(int new_value);
     void pop_front();
-    void view_queue(); 
+    void view_queue();
+    Node* get_head();
+    Node* get_tail();
     int get_size();
+    void set_size(int new_size) { size = new_size; }
   private:
     DL_List* data;
     int size;
